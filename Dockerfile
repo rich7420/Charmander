@@ -1,19 +1,21 @@
-# build
+# 使用官方的 Node.js 基礎映像
 FROM node:lts-alpine AS builder
+
+# 設置工作目錄
 WORKDIR /app
 
-# Copy package.json and install dependencies
+# 複製 package.json 並安裝依賴項
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the application code
+# 複製應用的其他代碼
 COPY . .
 
-# Set environment variable for the port
-ENV PORT 8080
+# 設置環境變量
+ENV PORT=8080
 
-# Expose the correct port
+# 暴露 8080 端口
 EXPOSE 8080
 
-# Start the application
+# 啟動應用
 CMD ["npm", "start"]
