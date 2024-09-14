@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # 設置環境變量
-ENV PORT=8080
+ENV PORT 8080
 
 # 暴露 8080 端口
 EXPOSE 8080
