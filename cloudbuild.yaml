@@ -10,6 +10,7 @@ steps:
            '--image', 'gcr.io/$PROJECT_ID/my-app',
            '--platform', 'managed',
            '--region', 'us-central1',
-           '--allow-unauthenticated']
+           '--allow-unauthenticated',
+           '--set-env-vars', 'PORT=8080']
 substitutions:
   _SERVICE: 'i-am-rich'
