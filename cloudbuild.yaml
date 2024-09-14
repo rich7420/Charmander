@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    aargs: ['build', '-t' , 'gcr.io/$PROJECT_ID/my-app', '.']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-app']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'my-app',
+           '--image', 'gcr.io/$PROJECT_ID/my-app',
+           '--platform', 'managed',
+           '--region', 'us-central1',
+           '--allow-unauthenticated']
+substitutions:
+  _SERVICE: 'i-am-rich'
